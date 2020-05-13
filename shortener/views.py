@@ -1,7 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.views import View
-from .models import KirrURL
+from .models import	Short_enURL
 from .forms import SubmitUrlForm
 from analytics.models import ClickEvent
 
@@ -10,20 +10,20 @@ from analytics.models import ClickEvent
 
 
 
-# def kirr_redirect_view(request,shortcode=None,*args,**kwargs):
+# def short_en_redirect_view(request,shortcode=None,*args,**kwargs):
 	
 # 	# try:
-# 	# 	obj = KirrURL.objects.get(shortcode=shortcode)
+# 	# 	obj = Short_enURL.objects.get(shortcode=shortcode)
 # 	# except:
-# 	# 	obj = KirrURL.objects.all().first()
+# 	# 	obj = Short_enURL.objects.all().first()
 
 
-# 	obj = get_object_or_404(KirrURL,shortcode=shortcode)
+# 	obj = get_object_or_404(Short_enURL,shortcode=shortcode)
 # 	# obj_url=obj.url
 
 
 # 	# obj_url=None
-# 	# qs= KirrURL.objects.filter(shortcode__iexact=shortcode.upper())
+# 	# qs= Short_enURL.objects.filter(shortcode__iexact=shortcode.upper())
 # 	# if qs.exists() and qs.count()==1:
 # 	# 	obj=qs.first()
 # 	# 	obj_url=obj.url
@@ -53,7 +53,7 @@ class HomeView(View):
 		template= "shortener/home.html"
 		if form.is_valid():
 			new_url = form.cleaned_data.get("url")
-			obj, created = KirrURL.objects.get_or_create(url=new_url)
+			obj, created = Short_enURL.objects.get_or_create(url=new_url)
 			context = {
 				"object": obj,
 				"created": created,
@@ -69,7 +69,7 @@ class HomeView(View):
 
 class URLRedirectView(View):
 	def get(self,request,shortcode=None,*args,**kwargs):
-		qs = KirrURL.objects.filter(shortcode__iexact=shortcode)
+		qs = Short_enURL.objects.filter(shortcode__iexact=shortcode)
 		if qs.count()!= 1 and not qs.exists():
 			raise Http404
 		obj = qs.first()
@@ -77,6 +77,6 @@ class URLRedirectView(View):
 		return HttpResponseRedirect(obj.url)
 
 
-		# obj = get_object_or_404(KirrURL,shortcode=shortcode)
+		# obj = get_object_or_404(Short_enURL,shortcode=shortcode)
 		# print(ClickEvent.objects.create_event(obj))
 		# return HttpResponseRedirect(obj.url)

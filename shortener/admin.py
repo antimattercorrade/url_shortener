@@ -2,6 +2,6 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import KirrURL
+from .models import Short_enURL
 
-admin.site.register(KirrURL)
+admin.site.register(Short_enURL)

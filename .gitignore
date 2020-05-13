@@ -3,7 +3,7 @@ venv
 staticfiles
 .env
 
-kirr/settings/local.py
+short_en/settings/local.py
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
