@@ -26,7 +26,7 @@ SECRET_KEY = '==yur&fmmb#_fs)yi=z8!-dl&-)+*ngyq-+%g+h8bzisu3+@_1'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['shortnewurl.co', 'new-shortener.herokuapp.com']
+ALLOWED_HOSTS = ['new-shortener.herokuapp.com']
 
 
 # Application definition
@@ -62,8 +62,8 @@ MIDDLEWARE = [
 ROOT_URLCONF = 'short_en.urls'
 ROOT_HOSTCONF = 'short_en.hosts'
 DEFAULT_HOST = 'www'
-DEFAULT_REDIRECT_URL = 'https://shortnewurl.co'
-PARENT_HOST = "shortnewurl.co"
+# DEFAULT_REDIRECT_URL = 'https://shortnewurl.co'
+PARENT_HOST = "new-shortener.herokuapp.com"
 
 TEMPLATES = [
     {
