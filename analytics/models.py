@@ -8,7 +8,7 @@ from shortener.models import Short_enURL
 class ClickEventManager(models.Manager):
 	def create_event(self,short_enInstance):
 		if isinstance(short_enInstance, Short_enURL):
-			obj = self.get_or_create(short_enurl=short_enInstance)
+			obj, created = self.get_or_create(short_enurl=short_enInstance)
 			obj.count+=1
 			obj.save()
 			return obj.count

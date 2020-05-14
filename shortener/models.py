@@ -1,4 +1,5 @@
 from django.db import models
+from django.utils.encoding import smart_text
 from .utils import code_generator, create_shortcode
 from django.conf import settings
 from .validators import validate_url, validate_dot_com
@@ -47,10 +48,10 @@ class Short_enURL(models.Model):
 	
 
 	def __str__(self):
-		return str(self.url)
+		return smart_text(self.url)
 
 	def __unicode__(self):
-		returnstr(self.url)
+		return smart_text(self.url)
 
 	def get_short_url(self):
 		url_path = reverse("scode", kwargs={'shortcode':self.shortcode}, host='www',scheme='http')

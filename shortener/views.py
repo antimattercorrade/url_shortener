@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views import View
 from .models import	Short_enURL
 from .forms import SubmitUrlForm
@@ -39,7 +39,7 @@ class HomeView(View):
 	def get(self,request,*args,**kwargs):
 		the_form = SubmitUrlForm()
 		context ={
-			"title": "Submit Url 123",
+			"title": "Submit Url",
 			"form" : the_form
 		}
 		return render(request,"shortener/home.html",context)
@@ -47,7 +47,7 @@ class HomeView(View):
 	def post(self,request,*args,**kwargs):
 		form = SubmitUrlForm(request.POST)
 		context ={
-			"title": "Submit Url 123",
+			"title": "Submit Url",
 			"form" : form
 		}
 		template= "shortener/home.html"
