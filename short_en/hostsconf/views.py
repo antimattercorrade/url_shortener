@@ -1,5 +1,5 @@
-from django.http import HttpResponseRedirect
-from django.conf import settings
+# from django.http import HttpResponseRedirect
+# from django.conf import settings
 
 # DEFAULT_REDIRECT_URL = getattr(settings, "DEFAULT_REDIRECT_URL","https://shortnewurl.co")
 
