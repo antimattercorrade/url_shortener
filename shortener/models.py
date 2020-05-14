@@ -54,5 +54,8 @@ class Short_enURL(models.Model):
 		return smart_text(self.url)
 
 	def get_short_url(self):
+		# url_path = reverse("scode", shortcode=self.shortcode)
+		# return url_path
+
 		url_path = reverse("scode", kwargs={'shortcode':self.shortcode}, host='www',scheme='http')
 		return url_path

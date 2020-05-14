@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.views import View
 from .models import	Short_enURL
@@ -47,7 +47,7 @@ class HomeView(View):
 	def post(self,request,*args,**kwargs):
 		form = SubmitUrlForm(request.POST)
 		context ={
-			"title": "Submit Url",
+			"title": "Submit Url 123",
 			"form" : form
 		}
 		template= "shortener/home.html"
@@ -76,7 +76,7 @@ class HomeView(View):
 class URLRedirectView(View):
 	def get(self,request,shortcode=None,*args,**kwargs):
 		qs = Short_enURL.objects.filter(shortcode__iexact=shortcode)
-		if qs.count()!= 1 and not qs.first():
+		if qs.count()!= 1 and not qs.exists():
 			raise Http404
 		obj = qs.first()
 		print(ClickEvent.objects.create_event(obj))
@@ -86,3 +86,9 @@ class URLRedirectView(View):
 		# obj = get_object_or_404(Short_enURL,shortcode=shortcode)
 		# print(ClickEvent.objects.create_event(obj))
 		# return HttpResponseRedirect(obj.url)
+
+
+# def root(request, url_hash):
+# 	url_new = get_object_or_404(Short_enURL, shortcode=url_hash)
+
+# 	return redirect(url_new.url)

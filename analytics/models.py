@@ -15,7 +15,7 @@ class ClickEventManager(models.Manager):
 		return None
 
 class ClickEvent(models.Model):
-	short_enurl = models.OneToOneField(Short_enURL, on_delete=models.DO_NOTHING)
+	short_enurl = models.OneToOneField(Short_enURL, on_delete=models.CASCADE)
 	count = models.IntegerField(default=0)
 	updated = models.DateTimeField(auto_now=True)
 	timestamp = models.DateTimeField(auto_now_add=True)
