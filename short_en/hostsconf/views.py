@@ -1,7 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.conf import settings
 
-DEFAULT_REDIRECT_URL = getattr(settings, "DEFAULT_REDIRECT_URL","https://new-shortener.herokuapp.com")
+DEFAULT_REDIRECT_URL = getattr(settings, "DEFAULT_REDIRECT_URL","https://shortnewurl.co")
 
 def wildcard_redirect(request,path=None):
 	new_url=DEFAULT_REDIRECT_URL
