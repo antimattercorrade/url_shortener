@@ -26,7 +26,7 @@ from analytics.models import ClickEvent
 # 	# qs= Short_enURL.objects.filter(shortcode__iexact=shortcode.upper())
 # 	# if qs.exists() and qs.count()==1:
 # 	# 	obj=qs.first()
-# 	# 	obj_url=obj.url
+# 	# 	obj_url=obj.url 
 # 	return HttpResponseRedirect(obj.url)
 
 def home_view_fbv(request,*args,**kwargs):
@@ -53,6 +53,12 @@ class HomeView(View):
 		template= "shortener/home.html"
 		if form.is_valid():
 			new_url = form.cleaned_data.get("url")
+			# try:
+			# 	obj = Short_enURL.objects.get(url=new_url)
+			# 	created = False
+			# except:
+			# 	obj = Short_enURL(url=new_url)
+			# 	created = True
 			obj, created = Short_enURL.objects.get_or_create(url=new_url)
 			context = {
 				"object": obj,
@@ -70,7 +76,7 @@ class HomeView(View):
 class URLRedirectView(View):
 	def get(self,request,shortcode=None,*args,**kwargs):
 		qs = Short_enURL.objects.filter(shortcode__iexact=shortcode)
-		if qs.count()!= 1 and not qs.exists():
+		if qs.count()!= 1 and not qs.first():
 			raise Http404
 		obj = qs.first()
 		print(ClickEvent.objects.create_event(obj))
