@@ -36,7 +36,6 @@ class Short_enURL(models.Model):
 	active = models.BooleanField(default=True)
 
 	objects= Short_enURLManager()
-	#some_random=Short_enURLManager()
 
 	def save(self, *args, **kwargs):
 		if self.shortcode is None or self.shortcode == "":
@@ -54,8 +53,5 @@ class Short_enURL(models.Model):
 		return smart_text(self.url)
 
 	def get_short_url(self):
-		# url_path = reverse("scode", shortcode=self.shortcode)
-		# return url_path
-
 		url_path = reverse("scode", kwargs={'shortcode':self.shortcode}, host='www',scheme='http')
 		return url_path

@@ -7,41 +7,49 @@
 	<link href="https://getbootstrap.com/docs/4.5/examples/cover/cover.css" rel="stylesheet">
 	{% block styles %}
 	<style >
-		body {
-			background-color: #22626B;
-			background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.popsci.com%2Fstory%2Fspace%2Fhow-to-weigh-universe-sun-earth-planet-moon-asteroid-galaxy%2F&psig=AOvVaw3PdkQ2jXUiCZIoe3HItKJe&ust=1589459874580000&source=images&cd=vfe&ved=0CAIQjRxqFwoTCKCR1s7tsOkCFQAAAAAdAAAAABAD');
-			background-size: cover;
-		}
 		.btn-link {
-			color: #50dfec;
+			color: #f2f5c9;
 			text-shadow: none;
 		}
 		.btn-link:hover {
-			color :#000000;
+			color :#ffffff;
 		}
 	</style>
 	{% endblock styles %}
 
 </head>
-<body>
 
-	 <div class="site-wrapper">
-	 	<div class="site-wrapper-inner">
-	 		<div class="cover-container">
-	 			<div class="inner cover">
-	 				{% block content %}
 
-					{% endblock content %}
+<body class="text-center">
+	<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
 
-	 			</div>
-	 			
-					
-	 		</div>
-	 		
-	 	</div>
-	 	
-	 </div>
+		<header class="masthead mb-auto">
+			<div class="inner">
+				<nav class="nav nav-masthead justify-content-center">
 
+				</nav>
+			</div>
+		</header>
+
+
+		<main role="main" class="inner cover">
+			<h1 class="cover-heading"></h1>
+			{% block content %}
+
+			{% endblock content %}
+
+		</main>
+
+
+
+
+		<footer class="mastfoot mt-auto">
+			<div class="inner" style="color: #ffffff;">
+				<p>Copyright &copy; <a href="https://github.com/antimattercorrade/">Kushagra Sharma</a></p>
+			</div>
+		</footer>
+	</div>
 </body>
+
 </html>
 

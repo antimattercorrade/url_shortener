@@ -23,7 +23,6 @@ urlpatterns = [
     re_path(r'^$',HomeView.as_view()),
     re_path(r'^(?P<shortcode>[a-zA-Z0-9_-]+)/$',URLRedirectView.as_view(),name='scode'),
     # re_path(r'^(?P<shortcode>[a-zA-Z0-9_-]+)/$',redirect_new, name='scode'),
-    # path('<str:shortcode>/',root,name='scode'),
 ]
 
 

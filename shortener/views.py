@@ -38,31 +38,30 @@ def home_view_fbv(request,*args,**kwargs):
 class HomeView(View):
 	def get(self,request,*args,**kwargs):
 		the_form = SubmitUrlForm()
+		bg_image = 'https://arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/XQRMY2UEXZE4VACIXD7SUC2GBU.jpg'
 		context ={
-			"title": "Submit Url",
-			"form" : the_form
+			"title": "Short.en",
+			"form" : the_form,
+			"bg_image": bg_image
 		}
 		return render(request,"shortener/home.html",context)
 
 	def post(self,request,*args,**kwargs):
 		form = SubmitUrlForm(request.POST)
+		bg_image = 'https://arc-anglerfish-arc2-prod-bonnier.s3.amazonaws.com/public/XQRMY2UEXZE4VACIXD7SUC2GBU.jpg'
 		context ={
-			"title": "Submit Url 123",
-			"form" : form
+			"title": "Short.en",
+			"form" : form,
+			"bg_image": bg_image
 		}
 		template= "shortener/home.html"
 		if form.is_valid():
 			new_url = form.cleaned_data.get("url")
-			# try:
-			# 	obj = Short_enURL.objects.get(url=new_url)
-			# 	created = False
-			# except:
-			# 	obj = Short_enURL(url=new_url)
-			# 	created = True
 			obj, created = Short_enURL.objects.get_or_create(url=new_url)
 			context = {
 				"object": obj,
 				"created": created,
+				"bg_image": bg_image
 			}	
 			if created:
 				template = "shortener/success.html"
@@ -87,8 +86,3 @@ class URLRedirectView(View):
 		# print(ClickEvent.objects.create_event(obj))
 		# return HttpResponseRedirect(obj.url)
 
-
-# def root(request, url_hash):
-# 	url_new = get_object_or_404(Short_enURL, shortcode=url_hash)
-
-# 	return redirect(url_new.url)

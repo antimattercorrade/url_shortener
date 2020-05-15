@@ -1,15 +1,36 @@
 {% extends "base.html" %}
 
 {% block title %}
-	{{ object.shortcode }} | {{block.super}}
+{{block.super}}
 {% endblock title %}
+
+{% block styles %}
+<style>
+	body {
+		background-color: #226268;
+		{% if bg_image %}background-image: url({{ bg_image }});{% endif %}
+		background-size: cover;
+
+	}
+
+	.btn-link {
+		color: #f2f5c9;
+		text-shadow: none;
+	}
+	.btn-link:hover {
+		color: #ffffff;
+	}
+</style>
+{% endblock styles %}
 
 {% block content %}
 <div class="">
 	<h1>Exists</h1>
+	
 	<p>{{ object.url }}</p>
-	{% if object.clickevent %}<p>Count: {{ object.clickevent.count }}</p>{% endif %}
-	<p><a class="btn btn-link" href="{{ object.get_short_url }}">{{ object.get_short_url }}</a></p>
-	<a class="btn btn-default" href="/">+ New</a>
+	<h5>{% if object.clickevent %}<p>Clicks: {{ object.clickevent.count }}</p>{% endif %}
+		<p><a class="btn btn-link" href="{{ object.get_short_url }}">{{ object.get_short_url }}</a></p>
+	</h5>
+	<a class="btn btn-primary" href="/">New</a>
 </div>
 {% endblock content %}
